@@ -6,8 +6,11 @@ A library for converting ORM Django models to JSON format. You can easily work w
 
 Quick start
 -----------
+0. Install packages::
 
-1. Add "orm2json" to your INSTALLED_APPS setting like this::
+    pip install django-orm2json
+
+1. Add "orm2json" to your INSTALLED_APPS setting like this (Optional. Under future functionality)::
 
     INSTALLED_APPS = [
         ...
