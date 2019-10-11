@@ -15,7 +15,7 @@ setup(
     license='MIT License (MIT)',  # example license
     description='A library for converting ORM Django models to JSON format.',
     long_description=README,
-    url='',
+    url='https://github.com/MrEarnestWhim/orm2json',
     author='Mr Earnest Whim',
     author_email='5494567@gmail.com',
     classifiers=[

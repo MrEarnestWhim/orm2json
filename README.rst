@@ -42,7 +42,7 @@ Quick start
             'avatar': 'icon',
         },
         add_static={
-            'custom_field': 'какой то текст' (получается, это поле и содержимое будет у каждого пользователя)
+            'custom_field': 'text'
         }
     )
     type(serialize_object.serialize())
