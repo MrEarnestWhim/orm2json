@@ -6,7 +6,7 @@ class Orm2JSON:
     Серелизатор данных (ага, а тут докума на русском :3)
     """
 
-    def __init__(self, data, allowed, image_size=None, add_static=None):
+    def __init__(self, data, allowed, add_static=None, **kwargs):
         """
         :param data: Объект или кверисет объектов
         :param allowed: Что хотим получить из этого объекта
@@ -37,16 +37,14 @@ class Orm2JSON:
          Тем самым на выходе мы получим от пользователей только имя, гуид и аватарку, при этом аватарка будет самой
          маленькой.
         """
-        if image_size is None:
-            image_size = {}
 
         if add_static is None:
             add_static = {}
 
         self.add_static = add_static
-        self.image_size = image_size
         self.allowed = allowed
         self.data = data
+        self.filters = kwargs
 
     def filter_data(self, item, name=''):
         """
