@@ -49,6 +49,8 @@ Quick start
         }
     )
     type(serialize_object.serialize())
+    >> <class 'list'>
+    type(serialize_object.serialize_json())
     >> <class 'str'>
 
 3. Supported fields:
