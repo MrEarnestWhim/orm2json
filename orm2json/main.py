@@ -1,3 +1,5 @@
+import json
+
 from django.db.models import QuerySet
 
 
@@ -6,11 +8,10 @@ class Orm2JSON:
     Серелизатор данных (ага, а тут докума на русском :3)
     """
 
-    def __init__(self, data, allowed, add_static=None, **kwargs):
+    def __init__(self, data, allowed: (list, tuple), add_static=None, **kwargs):
         """
         :param data: Объект или кверисет объектов
         :param allowed: Что хотим получить из этого объекта
-        :param image_size: В каком виде нам нужны картинки
         :param add_static: Докинуть какие-то кастомные поля в объект
         Пример:
             Serializer(
@@ -70,7 +71,7 @@ class Orm2JSON:
 
         return item
 
-    def __getter(self, obj):
+    def __getter(self, obj) -> dict:
         """
         Вытаскиваем из модели то что нам нужно
         :param obj: Объект модели
@@ -112,7 +113,7 @@ class Orm2JSON:
 
         return result
 
-    def serialize(self):
+    def serialize(self) -> list:
         """
         Внешняий метод, запускающий серелизацию.
         :return:
@@ -131,3 +132,6 @@ class Orm2JSON:
 
         # Ну или объект всего 1
         return [self.__getter(self.data)]
+
+    def serialize_json(self) -> str:
+        return json.dumps(self.serialize())
