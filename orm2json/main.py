@@ -86,15 +86,21 @@ class Orm2JSON:
                 })
             else:
                 for key in item.keys():
-                    if 'ManyRelatedManager' in str(type(getattr(obj, key))) \
-                            or 'RelatedManager' in str(type(getattr(obj, key))):
-                        _many_result = []
-                        for many_item in getattr(obj, key).all():
-                            many_ser_object = Orm2JSON(many_item, item[key])
-                            _many_result += many_ser_object.serialize()
+                    try:
+                        if 'ManyRelatedManager' in str(type(getattr(obj, key))) \
+                                or 'RelatedManager' in str(type(getattr(obj, key))):
+                            _many_result = []
+                            for many_item in getattr(obj, key).all():
+                                many_ser_object = Orm2JSON(many_item, item[key])
+                                _many_result += many_ser_object.serialize()
 
+                            result.update({
+                                key: _many_result
+                            })
+                            continue
+                    except Exception:
                         result.update({
-                            key: _many_result
+                            key: []
                         })
                         continue
 
