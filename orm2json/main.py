@@ -80,9 +80,12 @@ class Orm2JSON:
         result = {}
         for item in self.allowed:
             if isinstance(item, str):
+                _data = getattr(obj, item, '')
+                if hasattr(_data, 'getter'):
+                    _data = getattr(_data, 'getter')
+
                 result.update({
-                    item: self.filter_data(
-                        getattr(obj, item, ''))
+                    item: self.filter_data(_data)
                 })
             else:
                 for key in item.keys():
