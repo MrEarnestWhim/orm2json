@@ -142,5 +142,16 @@ class Orm2JSON:
         # Ну или объект всего 1
         return [self.__getter(self.data)]
 
+    def serialize_one(self) -> dict:
+        """
+        Внешняий метод, запускающий серелизацию.
+        :return:
+        """
+        # Если дата вдруг пришла пустая. Ибо тот же .first() при пустате вернет None
+        if self.data is None:
+            return {}
+
+        return self.__getter(self.data)
+
     def serialize_json(self) -> str:
         return json.dumps(self.serialize())
