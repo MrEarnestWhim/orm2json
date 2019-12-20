@@ -85,7 +85,7 @@ class Orm2JSON:
                     _data = getattr(_data, 'getter')
 
                 result.update({
-                    item: self.filter_data(_data)
+                    item: self.filter_data(_data, item)
                 })
             else:
                 for key in item.keys():
