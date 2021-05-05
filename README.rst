@@ -19,7 +19,7 @@ Quick start
 
 2. Example code::
 
-    import Orm2JSON
+    from orm2json import Orm2JSON
 
     serialize_object = Orm2JSON(
         User.objects.filter(**filter),
